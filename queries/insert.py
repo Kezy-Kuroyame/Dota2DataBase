@@ -222,7 +222,7 @@ def insertTeam():
                 ('9 Pandas', {random.randint(100, 1000)}, {random.randint(10000, 10000000)}),
                 ('BetBoom Team', {random.randint(100, 1000)}, {random.randint(10000, 10000000)}),
                 ('Liquid Team', {random.randint(100, 1000)}, {random.randint(10000, 10000000)}),
-                ('Team Secret', {random.randint(100, 1000)}, {random.randint(10000, 10000000)});
+                ('Team Secret', {random.randint(100, 1000)}, {random.randint(10000, 10000000)}),
                 ('Team Tundra', {random.randint(100, 1000)}, {random.randint(10000, 10000000)});
          """
     cursor.execute(sql_query)
@@ -463,9 +463,9 @@ def insertTeamsRandom():
     for i in range(2000):
         name = "".join(random.choice(letters) for _ in range(15))
         sql_query = f"""
-             INSERT INTO Team (name, count_wins, total_price) 
+             INSERT INTO Team (name, count_wins, count_defeats, total_price) 
                 VALUES 
-                    ('{name}', {random.randint(200, 1000)}, {random.randint(0, 1500000)})
+                    ('{name}', {random.randint(200, 1000)}, {random.randint(200, 1000)}, {random.randint(0, 1500000)})
         """
         cursor.execute(sql_query)
     conn.commit()
@@ -505,6 +505,5 @@ def insertTournamentRandom():
     conn.commit()
     cursor.close()
     conn.close()
-
 
 

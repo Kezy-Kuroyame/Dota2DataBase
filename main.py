@@ -5,3 +5,4 @@ from queries.triggers import main_triggers
 if __name__ == '__main__':
     main_triggers()
 
+

@@ -35,8 +35,9 @@ query_match = """
     CREATE TABLE IF NOT EXISTS Match (
       id_match SERIAL PRIMARY KEY,
       time_end TIME,
-      duration TIME,
-      win_team BOOLEAN
+      duration INT,
+      win_team BOOLEAN,
+      isTournament BOOLEAN DEFAULT FALSE
     );
     """
 
@@ -89,6 +90,7 @@ query_team = """
       id SERIAL PRIMARY KEY,
       name VARCHAR(30),
       count_wins INTEGER CHECK (count_wins >= 0),
+      count_defeats INTEGER CHECK (count_defeats >= 0),
       total_price INTEGER CHECK (total_price >= 0)
     );
     """
