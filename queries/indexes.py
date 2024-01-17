@@ -6,15 +6,11 @@ def create_indexes():
     cursor = conn.cursor()
 
     sql_query = f"""
-            INSERT INTO tournament (name, price_win, win_team) 
-                VALUES 
-                   ('The International 2023', 3148799, 1),
-                   ('DreamLeague Season 21', 1000000, 1),
-                   ('Riyadh Masters 2023', 15000000, 1),
-                   ('The Bali Major 2023', 500000, 2),
-                   ('DreamLeague Season 21', 1000000, 2),
-                   ('ESL One Berlin Major 2023', 500000, 2);               
-       """
+            CREATE INDEX ind_items_for_heroes_items_in_match on items_in_match USING hash(id_hero); 
+            CREATE INDEX ind_id_team1_tournament_match on tournament_match USING hash(id_team1);
+            CREATE INDEX ind_id_team2_tournament_match on tournament_match USING hash(id_team2);
+            CREATE INDEX ind_matches_history on matches_history USING hash(id_player); 
+            """
     cursor.execute(sql_query)
     conn.commit()
     cursor.close()
